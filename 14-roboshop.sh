@@ -1,7 +1,7 @@
 #!/bin/bash
 
 AMI_ID="ami-09c813fb71547fc4f"
-SG_ID= "sg-045b3478cf0d8062e""  #Replace with your security group id
+SG_ID= "sg-045b3478cf0d8062e"  #Replace with your security group id
 
 for instance in $@
 do
