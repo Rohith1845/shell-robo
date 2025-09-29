@@ -6,18 +6,18 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-LOGS_FOLDER="var/log/shell-roboshop"
-SCRIPT_NAME=$( echo $0 | cut -d "." -f1)
+LOGS_FOLDER="/var/log/shell-roboshop"
+SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 SCRIPT_DIR=$PWD
-MONGODB=HOST=mongodb.rdaws86s.fun
-LOG_FILE=$LOGS_FOLDER/$SCRIPT_NAME.log
+MONGODB_HOST=mongodb.daws86s.fun
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
 
 mkdir -p $LOGS_FOLDER
-echo "script started excuted at: $(date)" | tee -a $LOGS_FILE
+echo "Script started executed at: $(date)" | tee -a $LOG_FILE
 
-if [ $USERID -ne 0]; then
-    echo "Error:: please run the script with root privelege"
-    exit 1
+if [ $USERID -ne 0 ]; then
+    echo "ERROR:: Please run this script with root privelege"
+    exit 1 # failure is other than 0
 fi
 
 VALIDATE(){ # functions receive inputs through args just like shell script args
@@ -28,6 +28,7 @@ VALIDATE(){ # functions receive inputs through args just like shell script args
         echo -e "$2 ... $G SUCCESS $N" | tee -a $LOG_FILE
     fi
 }
+
 
 dnf module disable nodejs -y &>>$LOG_FILE
 VALIDATE $? "Disabling NodeJS"
