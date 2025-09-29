@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER_ID=$(id -u)
+USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -15,7 +15,7 @@ LOG_FILE=$LOGS_FOLDER/$SCRIPT_NAME.log
 mkdir -p $LOGS_FOLDER
 echo "script started excuted at: $(date)" | tee -a $LOGS_FILE
 
-if [ $USER_ID -ne 0]; then
+if [ $USERID -ne 0]; then
     echo "Error:: please run the script with root privelege"
     exit 1
 fi
